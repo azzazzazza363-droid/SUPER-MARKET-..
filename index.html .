@@ -10,9 +10,42 @@
         .product-info { flex-grow: 1; font-weight: bold; }
         input { width: 50px; padding: 5px; }
         #cart { margin-top: 20px; padding: 15px; background: #fff; border: 2px solid #27ae60; border-radius: 10px; }
+        /* كود التصميم الجديد */
+.section { display: none; padding: 20px; }
+.active { display: block; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+button { padding: 10px; margin: 5px; cursor: pointer; border-radius: 8px; border: 1px solid #ddd; background: #fff; }
+.cart-btn { background-color: #4CAF50; color: white; width: 100%; margin-top: 20px; }
+.back-btn { background-color: #f44336; color: white; }
     </style>
 </head>
 <body>
+    <div id="main" class="section active">
+    <h1>سوبر ماركت الأحمد</h1>
+    <div class="grid">
+        <button onclick="showSection('grains')">البقوليات</button>
+        <button onclick="showSection('cleaners')">المنظفات</button>
+        <button onclick="showSection('cans')">المعلبات</button>
+        <button onclick="showSection('biscuits')">البسكوت</button>
+        <button onclick="showSection('drinks')">المشروبات</button>
+    </div>
+</div>
+
+<!-- مثال لقسم واحد (كرر هذا الجزء لكل قسم) -->
+<div id="grains" class="section">
+    <h2>البقوليات</h2>
+    <button onclick="addToCart('أرز شالان')">أرز شالان</button>
+    <button class="back-btn" onclick="showSection('main')">رجوع</button>
+</div>
+
+<div id="cart" class="section">
+    <h2>سلتك الغذائية</h2>
+    <div id="cart-items"></div>
+    <input type="text" id="name" placeholder="الاسم">
+    <input type="text" id="address" placeholder="العنوان">
+    <button class="cart-btn" onclick="sendWhatsApp()">إرسال الطلب عبر واتساب</button>
+    <button class="back-btn" onclick="showSection('main')">إضافة المزيد</button>
+</div>
 
     <h1>قائمة المنتجات</h1>
     <div id="catalog"></div>
@@ -187,5 +220,22 @@
             window.open("https://wa.me/963952307348?text=" + msg);
         }
     </script>
+    <script>
+    let cart = [];
+    function showSection(id) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+    }
+    function addToCart(item) {
+        cart.push(item);
+        alert("تمت الإضافة للسلة!");
+    }
+    function sendWhatsApp() {
+        let name = document.getElementById('name').value;
+        let addr = document.getElementById('address').value;
+        let msg = "طلب جديد: " + cart.join(", ") + " | الاسم: " + name + " | العنوان: " + addr;
+        window.location.href = "https://wa.me/963952307348?text=" + encodeURIComponent(msg);
+    }
+</script>
 </body>
 </html>
