@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <title>متجر سيدي هشام</title>
     <style>
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+    padding: 20px;
+}
+
+.icon {
+    width: 90%;
+    height: 300px;
+    background-color: #f0f0f0;
+    border: 3px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+}
         body { font-family: sans-serif; background: #f4f4f4; padding: 15px; }
         .product-item { display: flex; align-items: center; background: #fff; padding: 10px; margin-bottom: 5px; border-radius: 5px; border: 1px solid #ddd; }
         .product-item img { width: 100px; height: 100px; object-fit: cover; margin-left: 10px; border-radius: 4px; }
@@ -20,15 +40,12 @@ button { padding: 10px; margin: 5px; cursor: pointer; border-radius: 8px; border
     </style>
 </head>
 <body>
-    <div id="main" class="section active">
-    <h1>سوبر ماركت الأحمد</h1>
-    <div class="grid">
-        <button onclick="showSection('grains')">البقوليات</button>
-        <button onclick="showSection('cleaners')">المنظفات</button>
-        <button onclick="showSection('cans')">المعلبات</button>
-        <button onclick="showSection('biscuits')">البسكوت</button>
-        <button onclick="showSection('drinks')">المشروبات</button>
-    </div>
+<div class="icon-container">
+    <div class="icon">بقوليات</div>
+    <div class="icon">منظفات</div>
+    <div class="icon">معلبات</div>
+    <div class="icon">بسكوت</div>
+    <div class="icon">مشروبات</div>
 </div>
 
 <!-- مثال لقسم واحد (كرر هذا الجزء لكل قسم) -->
